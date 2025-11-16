@@ -1,11 +1,37 @@
 .spanBlock {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #0080FF;
+    line-height: 20px;
 }
 
 .input {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #0080FF;
+    border: 1px solid #D1D1D1;
+    border-radius: 5px;
+    padding: 8px 12px;
+    outline: none;
+    width: 276px;
+}
+
+.input:focus {
+    border-color: #0080FF;
+    box-shadow: 0 0 0 1px rgba(0, 128, 255, 0.2);
 }
 
 .pen {
+    width: 18px;
+    height: 18px;
+    color: #0080FF;
+    cursor: pointer;
 }

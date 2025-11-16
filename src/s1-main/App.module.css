@@ -3,9 +3,17 @@
 }
 
 .hw {
+    width: 100vh;
+    margin: 0 auto;
+    padding: 30px;
+    font-family: 'Montserrat', sans-serif;
 
 }
 
 .hwTitle {
-
+    font-size: 22px;
+    font-weight: 600;
+    color: #000;
+    margin: 20px;
+    text-align: left;
 }
