@@ -17,7 +17,7 @@ type DefaultSpanPropsType = DetailedHTMLProps<
 >
 
 type SuperRadioPropsType = Omit<DefaultRadioPropsType, 'type'> & {
-    options?: any[]
+    options?: {id: number, value: string}[]
     onChangeOption?: (option: any) => void
 
     spanProps?: DefaultSpanPropsType // пропсы для спана
@@ -35,36 +35,45 @@ const SuperRadio: React.FC<SuperRadioPropsType> = ({
     ...restProps
 }) => {
     const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
-        // делают студенты
+        onChange?.(e);
+
+        if (!onChangeOption || !options?.length) return;
+
+        const selectedValue = e.currentTarget.value; // это строка!
+        onChangeOption(selectedValue);
     }
+
+    
 
     const finalRadioClassName = s.radio + (className ? ' ' + className : '')
     const spanClassName = s.span + (spanProps?.className ? ' ' + spanProps.className : '')
 
+
     const mappedOptions: any[] = options
-        ? options.map((o) => (
-              <label key={name + '-' + o.id} className={s.label}>
-                  <input
-                      id={id + '-input-' + o.id}
-                      className={finalRadioClassName}
-                      type={'radio'}
-                      // name, checked, value делают студенты
-
-                      onChange={onChangeCallback}
-                      {...restProps}
-                  />
-                  <span
-                      id={id + '-span-' + o.id}
-                      {...spanProps}
-                      className={spanClassName}
-                  >
-                      {o.value}
-                  </span>
-              </label>
-          ))
-        : []
-
+      ? options.map((o, index) => (
+          <label key={name + "-" + o.id} className={s.label}>
+            <input
+              id={id + "-input-" + o.id}
+              className={finalRadioClassName}
+              type={"radio"}
+              name={name} 
+              value={o.value} 
+              checked={value === o.value} 
+              onChange={onChangeCallback}
+              {...restProps}
+            />
+            <span
+              id={id + "-span-" + o.id}
+              {...spanProps}
+              className={spanClassName}
+            >
+              {o.value}
+            </span>
+          </label>
+        ))
+      : [];
     return <div className={s.options}>{mappedOptions}</div>
+    
 }
 
 export default SuperRadio
