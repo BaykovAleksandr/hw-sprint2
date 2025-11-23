@@ -38,7 +38,7 @@ const SuperRadio: React.FC<SuperRadioPropsType> = ({
     onChange?.(e);
 
     if (onChangeOption) {
-      onChangeOption(+e.currentTarget.value);
+      onChangeOption(Number(e.currentTarget.value));
     }
   };
 
@@ -60,7 +60,7 @@ const SuperRadio: React.FC<SuperRadioPropsType> = ({
             {...restProps}
           />
           <span
-            id={"hw7-super-radio-input-" + o.id}
+            id={"hw7-super-radio-span-" + o.id}
             {...spanProps}
             className={spanClassName}
           >
