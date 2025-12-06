@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import SuperButton from "../hw04/common/c2-SuperButton/SuperButton";
 import { restoreState } from "../hw06/localStorage/localStorage";
 import s from "./Clock.module.css";
@@ -10,16 +10,18 @@ function Clock() {
   const [date, setDate] = useState<Date>(
     new Date(restoreState("hw9-date", Date.now()))
   );
-  const [show, setShow] = useState<boolean>(true);
+  const [show, setShow] = useState<boolean>(false);
 
-  let intervalRef = useRef<NodeJS.Timeout | null>(null);
+
 
 const start = () => {
   setActive(true);
   if (timerId) {
     clearInterval(timerId);
   }
-  const id = setInterval(() => setDate(new Date()), 1000);
+  const now = new Date();
+  const oneMinuteAgo = new Date(now.getTime() - 60 * 1000);
+  const id = setInterval(() => setDate(oneMinuteAgo), 1000);
   setTimerId(Number(id)); // сохраняем ID
 };
 
@@ -42,13 +44,6 @@ const stop = () => {
 
   const onMouseEnter = () => {
     setShow(true);
-    return (
-      show && (
-        <div>
-          {stringMonth}, {stringDate}
-        </div>
-      )
-    );
     // пишут студенты // показать дату если наведена мышка
   };
   const onMouseLeave = () => {
