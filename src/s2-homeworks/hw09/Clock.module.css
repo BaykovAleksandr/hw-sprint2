@@ -1,14 +1,67 @@
-.buttonsContainer {
-}
-
+/* Основной контейнер часов */
 .clock {
+  font-family: Arial, sans-serif;
+  max-width: 300px;
+  margin: 0 auto;
 }
 
+/* Отображение времени */
 .watch {
+  font-size: 20px;
+  margin-bottom: 5px;
 }
 
 .watch strong {
+  color: #000;
+  font-weight: bold;
 }
 
+/* Дополнительная информация (дата) */
 .more {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+/* Контейнер для кнопок */
+.buttonsContainer {
+  display: flex;
+  gap: 10px;
+}
+
+/* Стили для кнопок - обе синие как в файле */
+.buttonsContainer button {
+  padding: 8px 16px;
+  font-size: 14px;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  min-width: 80px;
+}
+
+.buttonsContainer button:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.buttonsContainer button:active {
+  background-color: #004085;
+  border-color: #004085;
+}
+
+
+.buttonsContainer button:first-child,
+.buttonsContainer button:last-child {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.buttonsContainer button:first-child:hover,
+.buttonsContainer button:last-child:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
 }
