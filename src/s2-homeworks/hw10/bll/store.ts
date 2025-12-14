@@ -9,9 +9,12 @@ const reducers = combineReducers({
 
 const store = legacy_createStore(reducers)
 
+if (typeof window !== "undefined") {
+  (window as any).store = store;
+}
+
 export default store
 
 export type AppStoreType = ReturnType<typeof reducers>
 
-// @ts-ignore
-window.store = store // for dev // для того чтобы автотесты видели состояние данных
+
